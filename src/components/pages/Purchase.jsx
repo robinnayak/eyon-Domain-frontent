@@ -1,3 +1,4 @@
+// Not in use for now the purchase work is done in the Success component to avoid multiple page opening.
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 const Purchase = () => {

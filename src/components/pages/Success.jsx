@@ -162,7 +162,7 @@ const Success = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">Last Name</label>
+              <label className="block text-gray-600">Last Name <small className="text-red-700">*</small> </label>
               <input
                 type="text"
                 name="last_name"
@@ -175,7 +175,7 @@ const Success = () => {
           </div>
 
           <div>
-            <label className="block text-gray-600">Email</label>
+            <label className="block text-gray-600">Email <small className="text-red-700">*</small> </label>
             <input
               type="email"
               name="email"
@@ -187,7 +187,7 @@ const Success = () => {
           </div>
 
           <div>
-            <label className="block text-gray-600">Phone<small>Should be in this Format: +977.9817803950 (for Np)</small> </label>
+            <label className="block text-gray-600">Phone <small className="text-red-700">*</small> <small>Should be in this Format: +977.9817803950 (for Np)</small>  </label>
             <input
               type="text"
               name="phone"
@@ -202,7 +202,7 @@ const Success = () => {
           </div>
 
           <div>
-            <label className="block text-gray-600">Address Line 1</label>
+            <label className="block text-gray-600">Address Line 1 <small className="text-red-700">*</small></label>
             <input
               type="text"
               name="address1"
@@ -214,7 +214,7 @@ const Success = () => {
           </div>
 
           <div>
-            <label className="block text-gray-600">Address Line 2</label>
+            <label className="block text-gray-600">Address Line 2 <small className="text-red-700">*</small></label>
             <input
               type="text"
               name="address2"
@@ -226,7 +226,7 @@ const Success = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-600">City</label>
+              <label className="block text-gray-600">City <small className="text-red-700">*</small></label>
               <input
                 type="text"
                 name="city"
@@ -237,7 +237,7 @@ const Success = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">State</label>
+              <label className="block text-gray-600">State <small className="text-red-700">*</small></label>
               <input
                 type="text"
                 name="state"
@@ -250,7 +250,7 @@ const Success = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-600">Postal Code</label>
+              <label className="block text-gray-600">Postal Code <small className="text-red-700">*</small> </label>
               <input
                 type="text"
                 name="postal_code"
@@ -261,7 +261,7 @@ const Success = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">Country</label>
+              <label className="block text-gray-600">Country <small className="text-red-700">*</small></label>
               <input
                 type="text"
                 name="country"
@@ -275,7 +275,7 @@ const Success = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-600">Amount</label>
+              <label className="block text-gray-600">Amount <small className="text-red-700">*</small></label>
               <input
                 type="text"
                 name="amount"
@@ -286,7 +286,7 @@ const Success = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">Currency</label>
+              <label className="block text-gray-600">Currency <small className="text-red-700">*</small></label>
               <input
                 type="text"
                 name="currency"

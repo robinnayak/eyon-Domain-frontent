@@ -57,10 +57,10 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faInfoCircle} className="mr-2" /> About
           </NavLink>
           <NavLink
-            to="/pricing"
+            to="/purchase-detail"
             className="flex items-center text-gray-700 hover:text-yellow-500 font-medium"
           >
-            <FontAwesomeIcon icon={faTags} className="mr-2" /> Pricing
+            <FontAwesomeIcon icon={faTags} className="mr-2" /> Purchased Domains
           </NavLink>
           <NavLink
             to="/contact"
