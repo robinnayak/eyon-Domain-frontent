@@ -71,19 +71,19 @@ This project is a full-stack web application that allows users to search, purcha
 
 **Home Check Available Domain:**
 
-![Home Domain Available Screenshot](dns-service\screenshot\home_1.png)
-![Home Domain Available Screenshot](dns-service\screenshot\home_available_1.png)
+![Home Domain Available Screenshot](dns-service/src/assests/home_1.png)
+![Home Domain Available Screenshot](dns-service/src/assests/home_available_1.png)
 
 **Checkout By Stripe Payment:**
-![Checkout Session Screenshot](dns-service\screenshot\checkout_1.png)
+![Checkout Session Screenshot](dns-service\src\assests\checkout_1.png)
 
 **Purchase Domain:**
 
-![Purchase Domain Screenshot](dns-service\screenshot\payment_succesfull_1.png)
+![Purchase Domain Screenshot](dns-service\src\assests\payment_succesfull_1.png)
 
 **CSV Format:**
 
-![Domain Agreement Screenshot](dns-service\screenshot\csv_1.png)
+![Domain Agreement Screenshot](dns-service\src\assests\csv_1.png)
 
 ## Frontend Setup
 
