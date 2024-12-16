@@ -120,6 +120,9 @@ const Success = () => {
       alert("An error occurred while processing the purchase.");
       setLoading(false);
     }
+    finally{
+      setLoading(false);
+    }
   };
 
   return (
@@ -148,7 +151,7 @@ const Success = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-600">First Name</label>
+              <label className="block text-gray-600">First Name <small className="text-red-700">*</small> </label>
               <input
                 type="text"
                 name="first_name"
@@ -184,7 +187,7 @@ const Success = () => {
           </div>
 
           <div>
-            <label className="block text-gray-600">Phone</label>
+            <label className="block text-gray-600">Phone<small>Should be in this Format: +977.9817803950 (for Np)</small> </label>
             <input
               type="text"
               name="phone"
