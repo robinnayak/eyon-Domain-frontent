@@ -1,70 +1,205 @@
-# Getting Started with Create React App
+# Domain Name Purchase Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a full-stack web application that allows users to search, purchase, and manage domain names using the GoDaddy API and Stripe payment gateway. The backend is built using Django, and the frontend is developed with React.js. Below is the documentation to set up, run, and use the project.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Users can search for available domain names.
+- Integration with GoDaddy API for domain registration and management.
+- Secure payments via Stripe.
+- Domain purchase history and details.
+- User-friendly interface built with React.js.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+- Python 3.8+
+- Node.js and npm
+- Postman (for API testing)
+- Virtual environment for Python (recommended)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Backend Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation Steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository for the backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/robinnayak/your-backend-repo.git
+   cd your-backend-repo
+   ```
 
-### `npm run eject`
+2. Create and activate a virtual environment:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Create a `.env` file in the root directory with the following structure:
 
-## Learn More
+   ```env
+   GODADDY_API_KEY=your_godaddy_api_key
+   GODADDY_API_SECRET_KEY=your_godaddy_api_secret_key
+   STRIPE_SECRET_KEY=your_stripe_secret_key
+   WEBHOOK_ENDPOINT_SECRET=your_webhook_endpoint_secret
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Replace the placeholders with your own keys.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Apply migrations and start the server:
 
-### Code Splitting
+   ```bash
+   python manage.py migrate
+   python manage.py runserver
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   The backend will be available at `http://localhost:8000/`.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Home Check Available Domain:**
 
-### Making a Progressive Web App
+![Home Domain Available Screenshot](dns-service\screenshot\home_1.png)
+![Home Domain Available Screenshot](dns-service\screenshot\home_available_1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Checkout By Stripe Payment:**
+![Checkout Session Screenshot](dns-service\screenshot\checkout_1.png)
 
-### Advanced Configuration
+**Purchase Domain:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![Purchase Domain Screenshot](dns-service\screenshot\payment_succesfull_1.png)
 
-### Deployment
+**CSV Format:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Domain Agreement Screenshot](dns-service\screenshot\csv_1.png)
 
-### `npm run build` fails to minify
+## Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Installation Steps:
+
+1. Clone the React.js frontend repository:
+
+   ```bash
+   git clone https://github.com/robinnayak/eyon-Domain-frontent.git
+   cd eyon-Domain-frontent
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+   The frontend will be available at `http://localhost:3000/`.
+
+## API Endpoints
+
+Here is a list of key API endpoints tested with Postman:
+
+### **Checkout Session**
+
+- **Endpoint:** `POST /checkout-session/`
+- **Request Body:**
+  ```json
+  {
+    "name": "roomrrentaler.com",
+    "price": "10.23",
+    "period": "1",
+    "email": "example@gmail.com"
+  }
+  ```
+- **Description:** Creates a checkout session for the domain purchase.
+
+### **Purchase Domain**
+
+- **Endpoint:** `POST /purchase-domain/`
+- **Request Body:**
+  ```json
+  {
+    "domain_name": "roomrrentaler.com",
+    "email": "example@gmail.com",
+    "period": 1,
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone": "+1.5555555555",
+    "address1": "123 Example Street",
+    "city": "Example City",
+    "state": "CA",
+    "postal_code": "90001",
+    "country": "US",
+    "amount": 10,
+    "currency": "USD"
+  }
+  ```
+- **Description:** Purchases a domain using GoDaddy API.
+
+### **Domain Agreement**
+
+- **Endpoint:** `GET /domain-agreement/`
+- **Description:** Retrieves the domain agreement required for purchase.
+
+### **List Domains**
+
+- **Endpoint:** `GET /list-domains/`
+- **Request Body:**
+  ```json
+  {
+    "domain_name": "roomsavehunter"
+  }
+  ```
+- **Description:** Fetches a list of available domains.
+
+### **Stripe Payment**
+
+- **Endpoint:** `POST /payment/`
+- **Request Body:**
+  ```json
+  {
+    "card_number": "4242424242424242",
+    "expiry_month": "12",
+    "expiry_year": "2025",
+    "cvc": "123"
+  }
+  ```
+- **Description:** Processes payments via Stripe.
+
+---
+
+## Testing with Postman
+
+1. Import the Postman collection (`GoDaddyServiceProvider.postman_collection.json`) into Postman.
+2. Use the `.env` file's credentials to test the endpoints.
+3. Below are sample screenshots for reference:
+
+   **Checkout Session:**
+   ![Checkout Session](path/to/checkout-session-screenshot.png)
+
+   **Purchase Domain:**
+   ![Purchase Domain](path/to/purchase-domain-screenshot.png)
+
+---
+
+## Important Notes
+
+- The `.env` file is excluded from the repository for security purposes. You must create your own `.env` file as described above.
+- Replace the keys in the `.env` file template with your own dummy data or actual credentials.
+
+---
